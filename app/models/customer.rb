@@ -4,12 +4,12 @@ class Customer < ApplicationRecord
 
   def ban_it
     self.banned = true
-    self.save
+    save
   end
 
   def unban_it
     self.banned = false
-    self.save
+    save
   end
 
   def self.search_by_phone(phone)

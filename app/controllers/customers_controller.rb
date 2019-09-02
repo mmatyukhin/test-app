@@ -1,5 +1,5 @@
 class CustomersController < ApplicationController
-  before_action :set_customer, only: [:show, :edit, :update, :destroy, :ban, :unban]
+  before_action :set_customer, only: %i[show edit update destroy ban unban]
 
   # GET /customers
   # GET /customers.json
@@ -93,9 +93,7 @@ class CustomersController < ApplicationController
       end
     end
 
-    @customer.each do |customer|
-      customer.ban_it
-    end
+    @customer.each(&:ban_it)
 
     respond_to do |format|
       format.html { redirect_to banned_url, notice: 'Customer was successfully banned.' }
@@ -104,13 +102,14 @@ class CustomersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_customer
-      @customer = Customer.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def customer_params
-      params.require(:customer).permit(:name, :phone, :description, :banned)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_customer
+    @customer = Customer.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def customer_params
+    params.require(:customer).permit(:name, :phone, :description, :banned)
+  end
 end
