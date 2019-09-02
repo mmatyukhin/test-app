@@ -1,5 +1,5 @@
 class CustomersController < ApplicationController
-  before_action :set_customer, only: [:show, :edit, :update, :destroy]
+  before_action :set_customer, only: [:show, :edit, :update, :destroy, :ban, :unban]
 
   # GET /customers
   # GET /customers.json
@@ -10,7 +10,7 @@ class CustomersController < ApplicationController
   def banned_index
     @customers = Customer.got_ban
 
-    render :index
+    render :banned
   end
 
   # GET /customers/1
@@ -63,6 +63,22 @@ class CustomersController < ApplicationController
     @customer.destroy
     respond_to do |format|
       format.html { redirect_to customers_url, notice: 'Customer was successfully destroyed.' }
+      format.json { head :no_content }
+    end
+  end
+
+  def ban
+    @customer.ban_it
+    respond_to do |format|
+      format.html { redirect_to customers_url, notice: 'Customer was successfully banned.' }
+      format.json { head :no_content }
+    end
+  end
+
+  def unban
+    @customer.unban_it
+    respond_to do |format|
+      format.html { redirect_to banned_url, notice: 'Customer was successfully banned.' }
       format.json { head :no_content }
     end
   end
