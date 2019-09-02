@@ -78,7 +78,7 @@ class CustomersController < ApplicationController
   def unban
     @customer.unban_it
     respond_to do |format|
-      format.html { redirect_to banned_url, notice: 'Customer was successfully banned.' }
+      format.html { redirect_to banned_url, notice: 'Customer was successfully unbanned.' }
       format.json { head :no_content }
     end
   end
