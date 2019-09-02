@@ -4,7 +4,13 @@ class CustomersController < ApplicationController
   # GET /customers
   # GET /customers.json
   def index
-    @customers = Customer.all
+    @customers = Customer.not_banned
+  end
+
+  def banned_index
+    @customers = Customer.got_ban
+
+    render :index
   end
 
   # GET /customers/1
