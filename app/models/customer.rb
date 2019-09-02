@@ -11,4 +11,12 @@ class Customer < ApplicationRecord
     self.banned = false
     self.save
   end
+
+  def self.search_by_phone(phone)
+    result = all
+
+    result = result.where(phone: phone)
+
+    result
+  end
 end

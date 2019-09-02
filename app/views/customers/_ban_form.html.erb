@@ -1,0 +1,7 @@
+<h2>Ban by phone</h2>
+<%= form_tag controller: "customers", action: "ban_by_phone", method: :post do %>
+<%= label_tag :phone, 'phone' %>
+<%= text_field :phone, params[:phone], placeholder: 'phone' %>
+
+<%= submit_tag 'Ban' %>
+<% end %>
