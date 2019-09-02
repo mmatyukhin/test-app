@@ -1,28 +1,29 @@
 <p id="notice"><%= notice %></p>
 
-<h1><%= link_to 'Customers', customers_url %> <%= link_to 'Banned customers', banned_url %> </h1>
+<h1 class = "flex mb-4 mt-4 w-1/4 text-xl no-underline hover:font-bold"><%= link_to 'Customers', customers_url %> </h1>
+<h1 class = "flex mb-4 mt-4 w-1/4 text-xl no-underline hover:font-bold"><%= link_to 'Banned customers', banned_url %> </h1>
 
-<table>
+<table class="text-left w-full border-collapse">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Phone</th>
-      <th>Description</th>
-      <th>Actions</th>
-      <th colspan="3"></th>
+      <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Name</th>
+      <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Phone</th>
+      <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Description</th>
+      <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Actions</th>
+      <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light" colspan="4"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @customers.each do |customer| %>
-      <tr>
-        <td><%= customer.name %></td>
-        <td><%= customer.phone %></td>
-        <td><%= customer.description %></td>
-        <td><%= link_to 'Ban', controller: "customers", action: "ban", id: customer, data: { confirm: 'Are you sure?' } %></td>
-        <td><%= link_to 'Show', customer %></td>
-        <td><%= link_to 'Edit', edit_customer_path(customer) %></td>
-        <td><%= link_to 'Destroy', customer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <tr class="hover:bg-grey-lighter">
+        <td class="py-4 px-6 border-b border-grey-light"><%= customer.name %></td>
+        <td class="py-4 px-6 border-b border-grey-light"><%= customer.phone %></td>
+        <td class="py-4 px-6 border-b border-grey-light"><%= customer.description %></td>
+        <td class="py-4 px-6 border-b border-grey-light"><%= link_to 'Ban', controller: "customers", action: "ban", id: customer, data: { confirm: 'Are you sure?' } %></td>
+        <td class="py-4 px-6 border-b border-grey-light"><%= link_to 'Show', customer, class: "text-grey-lighter font-bold py-1 px-3 rounded text-xs bg-blue hover:bg-blue-dark"  %></td>
+        <td class="py-4 px-6 border-b border-grey-light"><%= link_to 'Edit', edit_customer_path(customer), class: "text-grey-lighter font-bold py-1 px-3 rounded text-xs bg-green hover:bg-green-dark"  %></td>
+        <td class="py-4 px-6 border-b border-grey-light"><%= link_to 'Destroy', customer, method: :delete, class: "text-grey-lighter font-bold py-1 px-3 rounded text-xs bg-red hover:bg-red-dark", data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -30,4 +31,4 @@
 
 <br>
 
-<%= link_to 'New Customer', new_customer_path %>
+<%= link_to 'New Customer', new_customer_path, class: "py-2 px-4 rounded-full no-underline" %>

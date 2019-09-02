@@ -7,9 +7,12 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@0.7.4/dist/tailwind.min.css" rel="stylesheet">
   </head>
 
-  <body>
+  <body class="font-sans text-grey-darkest bg-grey-lightest">
+    <div class="container mx-auto px-4">
     <%= yield %>
+    </div>
   </body>
 </html>

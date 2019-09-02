@@ -1,7 +1,7 @@
 <h2>Ban by phone</h2>
 <%= form_tag controller: "customers", action: "ban_by_phone", method: :post do %>
-<%= label_tag :phone, 'phone' %>
-<%= text_field :phone, params[:phone], placeholder: 'phone' %>
 
-<%= submit_tag 'Ban' %>
+<%= text_field :phone, params[:phone], placeholder: 'phone', class: 'mt-1 px-3 py-2 rounded shadow'  %>
+
+<%= submit_tag 'Ban', class: 'bg-white border rounded py-2 px-3' %>
 <% end %>
